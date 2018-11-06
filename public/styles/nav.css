@@ -1,0 +1,29 @@
+#nav-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #39ccb7;
+  color: #e8fdff;
+  display: flex;
+  align-items: center;
+  padding: 0 1em 0 1em;
+  height: 80px;
+
+}
+
+
+
+#nav-bar .logo {
+  /* margin-left: 10px; */
+  height: 80px;
+  width: 80px;
+  float: left;
+}
+
+#nav-bar .header {
+  padding-left: 10px;
+  margin: 0px 0 0 0px;
+  /*10px 0 0 3px; */
+  font-size: 30px;
+  float: left;
+}
