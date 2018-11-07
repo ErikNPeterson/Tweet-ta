@@ -1,9 +1,10 @@
 .new-tweet {
-  margin-top: 140px;
+  margin-top: 20px;
   padding: 10px;
   border: #d2c9c9 1px solid;
   border-radius: 10px;
   display: flow-root;
+  z-index: 2;
 }
 
 .new-tweet textarea {
