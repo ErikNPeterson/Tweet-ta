@@ -5,6 +5,11 @@
   border-radius: 10px;
   display: flow-root;
   z-index: 2;
+  display: none;
+}
+
+.tweet div {
+  overflow-wrap: break-word;
 }
 
 .new-tweet textarea {
@@ -17,14 +22,39 @@
 }
 
 .new-tweet h2 {
-  border-bottom: black 1.5px solid;
+  border-bottom: black 1px solid;
   margin-top: 0;
 
 }
 
+.Error {
+  margin-top: 20px;
+  background-color: darkred;
+  color: coral;
+  border: coral 3px solid;
+  padding: 10px;
+  display: none;
+  z-index: 2;
+}
 
+.Error #close {
+  background-color: darkred;
+  color: yellow;
+  border: yellow 2px solid;
+  float: right;
+}
 
-/* {
-  width: 100%;
-  padding: 0 1em 0 1em;
-} */
+.Error .fa-window-close {
+  color: yellow;
+
+}
+
+.Error div {
+  font-size: 1.5rem;
+  padding: 0.8rem;
+}
+
+.Error h2 {
+  border-bottom: yellow 1px solid;
+  margin-top: 0;
+}

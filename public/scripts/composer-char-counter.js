@@ -1,8 +1,5 @@
 console.log("hello WOrld! from char counter");
 
-// .new-tweet textarea {
-//   width: 100%;
-// }
 
 $(document).ready(function () {
   $("textarea").on("keyup", (event) => {

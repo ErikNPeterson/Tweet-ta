@@ -42,7 +42,9 @@ module.exports = function (DataHelpers) {
           error: err.message
         });
       } else {
-        res.status(201).send();
+        // this returns the tweet as an object when it is create.
+        res.json(tweet);
+        // res.status(201).send();
       }
     });
   });

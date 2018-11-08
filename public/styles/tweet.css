@@ -10,6 +10,7 @@
   border: #d2c9c9 1px solid;
   border-radius: 10px;
   display: flow-root;
+  background-color: whitesmoke;
 }
 
 .tweet div {

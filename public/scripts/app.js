@@ -3,6 +3,12 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+function escape(str) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
 
 $(document).ready(function () {
   function createTweetElement(tweet) {
@@ -20,7 +26,7 @@ $(document).ready(function () {
           <span class="handle">${handle}</span>
     </header>
     <div>
-          ${content}
+          ${escape(content)}
     </div>
     <footer>
           <span>${daysSince(timeStamp)}</span>
@@ -41,60 +47,164 @@ $(document).ready(function () {
     return `${days} days since post`
   }
 
-  // Math.abs(new Date(Date.now()).getDate() - new Date(stamp).getDate())
-
-  const data = [{
-      "user": {
-        "name": "Newton",
-        "avatars": {
-          "small": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-          "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-          "large": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-        },
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": {
-          "small": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
-          "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
-          "large": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
-        },
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    },
-    {
-      "user": {
-        "name": "Johann von Goethe",
-        "avatars": {
-          "small": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
-          "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
-          "large": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
-        },
-        "handle": "@johann49"
-      },
-      "content": {
-        "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
-      },
-      "created_at": 1461113796368
-    }
-  ];
-
   function renderTweets(arrayOfTweets) {
+    arrayOfTweets = arrayOfTweets.reverse();
     arrayOfTweets.forEach(tweet => {
-      $('.container').append(createTweetElement(tweet));
+      $('.tweetContainer').append(createTweetElement(tweet));
     });
   }
 
-  renderTweets(data);
-})
+  function addNewTweetToPage(tweet) {
+    $('.tweetContainer').prepend(createTweetElement(tweet));
+  }
+
+  // renderTweets(data);
+
+  //sending new tweet 
+  // this will need to be fixed to not except a string of spaces.
+  $("#newTweetForm").submit(function (event) {
+
+    $('.Error').slideUp(300, function () {
+      $(this).remove()
+    })
+
+    event.preventDefault();
+    const count = parseInt($('.counter')[0].innerText);
+    if (count === 140) {
+      // add in a 
+      errorMessage("Please enter some content."); // here
+    } else if (count < 0) {
+      // add in a 
+      errorMessage("Your tweet is too long. Please shorten."); //here
+    } else {
+      $.ajax('/tweets', {
+        method: 'POST',
+        data: escape($(this).serialize()),
+        success: (tweet) => {
+          addNewTweetToPage(tweet);
+        }
+      });
+    }
+
+  });
+
+  function loadTweets() {
+    $.ajax('/tweets', {
+        method: 'GET'
+      })
+      .then(renderTweets);
+    // .then is a function .then passes whatever .ajax returns to the function that you 
+  }
+
+  loadTweets();
+
+  function escape(str) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
+
+  $("#composeButton").click(function () {
+    $(".new-tweet").slideToggle("200", function () {
+
+    });
+    $('#newTweetForm textarea').focus();
+  });
+
+
+
+
+  function errorMessage(errorString) {
+    const Error = errorString;
+
+    const errorHTML =
+      `<article class="Error">
+    <header>
+    <i class="fas fa-exclamation-triangle"></i>
+      <h2 class="author">ERROR</h2>
+    </header>
+    <div>
+          ${Error}
+    </div>
+    <footer>
+    <button id="close"><i class="far fa-window-close"></i>  Close</button>
+    </footer>
+  </article>`;
+
+
+    $('.Error').remove();
+    $('.container .new-tweet').append(errorHTML);
+    $('.Error').slideDown(300, function () {
+      $(this).css('display', 'flow-root')
+    });
+
+
+  }
+
+  $(".new-tweet").on('click', '#close', function () {
+    $('.Error').slideUp(300, function () {
+      $(this).remove()
+    })
+  });
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const data = [{
+//     "user": {
+//       "name": "Newton",
+//       "avatars": {
+//         "small": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
+//         "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
+//         "large": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
+//       },
+//       "handle": "@SirIsaac"
+//     },
+//     "content": {
+//       "text": "If I have seen further it is by standing on the shoulders of giants"
+//     },
+//     "created_at": 1461116232227
+//   },
+//   {
+//     "user": {
+//       "name": "Descartes",
+//       "avatars": {
+//         "small": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
+//         "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
+//         "large": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
+//       },
+//       "handle": "@rd"
+//     },
+//     "content": {
+//       "text": "Je pense , donc je suis"
+//     },
+//     "created_at": 1461113959088
+//   },
+//   {
+//     "name": "Johann von Goethe",
+//     "user": {
+//       "avatars": {
+//         "small": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
+//         "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
+//         "large": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
+//       },
+//       "handle": "@johann49"
+//     },
+//     "content": {
+//       "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
+//     },
+//     "created_at": 1461113796368
+//   }
+// ];
