@@ -1,11 +1,17 @@
 .new-tweet {
-  margin-top: 20px;
+  margin-top: 1px;
   padding: 10px;
-  border: #d2c9c9 1px solid;
+  border: 5px solid;
+  background-color: skyblue;
   border-radius: 10px;
   display: flow-root;
   z-index: 2;
   display: none;
+}
+
+.new-tweet input {
+  background-color: #39ccb7;
+  border-color: chartreuse;
 }
 
 .tweet div {
@@ -24,7 +30,6 @@
 .new-tweet h2 {
   border-bottom: black 1px solid;
   margin-top: 0;
-
 }
 
 .Error {
@@ -46,7 +51,6 @@
 
 .Error .fa-window-close {
   color: yellow;
-
 }
 
 .Error div {

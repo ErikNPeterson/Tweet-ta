@@ -23,7 +23,7 @@ body {
   margin: 0;
   color: #244751;
   background-color: #eee;
-  background: beige;
+  background: khaki;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -34,11 +34,3 @@ main.container {
   background-color: white;
   display: flow-root;
 }
-
-/* section.new-tweet {
-  margin-top: 300px;
-} */
-
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */

@@ -8,8 +8,10 @@ $(document).ready(function () {
     let reduceCounter = maxCounter - lengthOfText;
     if (reduceCounter <= 0) {
       $(".counter")[0].style.color = "red";
+      $(".counter")[0].style.fontWeight = "bold";
     } else {
       $(".counter")[0].style.color = "";
+      $(".counter")[0].style.fontWeight = "";
     }
     $(".counter")[0].innerText = reduceCounter;
   });

@@ -58,10 +58,7 @@ $(document).ready(function () {
     $('.tweetContainer').prepend(createTweetElement(tweet));
   }
 
-  // renderTweets(data);
-
   //sending new tweet 
-  // this will need to be fixed to not except a string of spaces.
   $("#newTweetForm").submit(function (event) {
 
     $('.Error').slideUp(300, function () {
@@ -71,11 +68,9 @@ $(document).ready(function () {
     event.preventDefault();
     const count = parseInt($('.counter')[0].innerText);
     if (count === 140) {
-      // add in a 
-      errorMessage("Please enter some content."); // here
+      errorMessage("Please enter some content.");
     } else if (count < 0) {
-      // add in a 
-      errorMessage("Your tweet is too long. Please shorten."); //here
+      errorMessage("Your tweet is too long. Please shorten.");
     } else {
       $.ajax('/tweets', {
         method: 'POST',
@@ -93,7 +88,6 @@ $(document).ready(function () {
         method: 'GET'
       })
       .then(renderTweets);
-    // .then is a function .then passes whatever .ajax returns to the function that you 
   }
 
   loadTweets();
@@ -110,9 +104,6 @@ $(document).ready(function () {
     });
     $('#newTweetForm textarea').focus();
   });
-
-
-
 
   function errorMessage(errorString) {
     const Error = errorString;
@@ -131,13 +122,11 @@ $(document).ready(function () {
     </footer>
   </article>`;
 
-
     $('.Error').remove();
     $('.container .new-tweet').append(errorHTML);
     $('.Error').slideDown(300, function () {
       $(this).css('display', 'flow-root')
     });
-
 
   }
 

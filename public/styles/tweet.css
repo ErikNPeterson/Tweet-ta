@@ -3,7 +3,6 @@
   transition: .5s;
 }
 
-
 .tweet {
   opacity: 0.8;
   margin: 20px 0 20px 0;
@@ -26,13 +25,16 @@
 }
 
 .tweet .avatar {
-  width: 28px;
+  width: 30px;
+  vertical-align: bottom;
+  border-radius: 30px;
 }
 
 .tweet .handle {
   color: #39ccb7;
   font-size: small;
   float: right;
+  padding-right: 2.5px;
 }
 
 .tweet {
@@ -41,7 +43,6 @@
   margin: 1.5em;
 }
 
-
 .tweet header {
   opacity: 0.5;
   padding: 5px;
@@ -49,7 +50,6 @@
   background-color: #eee;
   border-radius: 10px 10px 0 0;
   margin-top: 0;
-
 }
 
 .tweet footer {
@@ -61,7 +61,6 @@
   font-size: smaller;
   color: darkgrey;
 }
-
 
 .tweet i {
   float: right;
@@ -78,9 +77,3 @@
   opacity: 1;
   transition: .5s;
 }
-
-/* 
-.tweet footer span {
-  float: right;
-  margin-right: 5px;
-} */

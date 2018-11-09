@@ -43,13 +43,11 @@
 
 #composeButton:hover {
   opacity: 1;
-  /* transition: .5s; */
 }
 
 #nav-bar .header {
   padding-left: 10px;
   margin: 0px 0 0 0px;
-  /*10px 0 0 3px; */
   font-size: 30px;
   float: left;
 }
