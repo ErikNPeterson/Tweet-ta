@@ -1,0 +1,59 @@
+.new-tweet {
+  margin-top: 1px;
+  padding: 10px;
+  border: 5px solid;
+  background-color: skyblue;
+  border-radius: 10px;
+  display: flow-root;
+  z-index: 2;
+  display: none;
+  input {
+    background-color: #39ccb7;
+    border-color: chartreuse;
+  }
+}
+
+.tweet div {
+  overflow-wrap: break-word;
+}
+
+.new-tweet {
+  textarea {
+    width: 100%;
+  }
+  .counter {
+    float: right;
+    margin-right: 5px;
+  }
+  h2 {
+    border-bottom: black 1px solid;
+    margin-top: 0;
+  }
+}
+
+.Error {
+  margin-top: 20px;
+  background-color: darkred;
+  color: coral;
+  border: coral 3px solid;
+  padding: 10px;
+  display: none;
+  z-index: 2;
+  #close {
+    background-color: darkred;
+    color: yellow;
+    border: yellow 2px solid;
+    float: right;
+  }
+  .fa-window-close {
+    color: yellow;
+  }
+  div {
+    font-size: 1.5rem;
+    padding: 0.8rem;
+  }
+  h2 {
+    border-bottom: yellow 1px solid;
+    margin-top: 0;
+  }
+}
