@@ -19,6 +19,18 @@ module.exports = function (DataHelpers) {
     });
   });
 
+
+  tweetsRoutes.post("/like", function (req, res) {
+    console.log(req.body);
+    if (!req.body) {
+      res.status(400).json({
+        error: 'invalid request: no data in POST body (from /like dest)'
+      });
+    }
+    let id = req.body.id;
+    DataHelpers.likeTweet(id);
+  })
+
   tweetsRoutes.post("/", function (req, res) {
     if (!req.body.text) {
       res.status(400).json({

@@ -1,6 +1,3 @@
-console.log("hello WOrld! from char counter");
-
-
 $(document).ready(function () {
   $("textarea").on("keyup", (event) => {
     let lengthOfText = event.target.textLength;
